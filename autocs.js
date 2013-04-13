@@ -1,15 +1,3 @@
-
-var resize = function() {
-	if (rsDelay) clearTimeout(rsDelay);
-	rsDelay = setTimeout(function() {
-		var offset = $bind.offset();
-		$pop.css({
-			left: offset.left,
-			top: offset.top + $bind.outerHeight() + 2,
-			width: $bind.outerWidth()
-		});
-	}, 99)
-}
 $.fn.autocs = function(url) {
 	if (!$("#autocs").length) {
 		$("body").append('<ul id="autocs" class="autopop"></ul>');
@@ -39,7 +27,7 @@ $.fn.autocs = function(url) {
 			$t = $(this).attr("autocomplete", "off").on({
 			focus: function() {
 				$bind = $t;
-				$pop.html("<li class='pop'><b>" + $t.val() + "</b></li>");
+				$pop.html("<li class='pop'>" + $t.val() + "</li>");
 				resize();
 				$(window).on("resize", resize);
 			},
@@ -49,17 +37,17 @@ $.fn.autocs = function(url) {
 						$pop.hide();
 						break;
 					case 13:
-						$t.val($pop.hide().find(".pop b").text());
+						$t.val($pop.hide().find(".pop").text());
 						break;
 					case 38:
 						var $p = $pop.find(".pop").removeClass("pop");
 						if ($p.index() > 0) $p.prev().addClass("pop");
-						else $pop.find("li:last").addClass("pop");
+						else $pop.find("li").last().addClass("pop");
 						return false;
 					case 40:
 						var $p = $pop.find(".pop").removeClass("pop");
 						if ($p.index() < l) $p.next().addClass("pop");
-						else $pop.find("li:first").addClass("pop");
+						else $pop.find("li").first().addClass("pop");
 						return false;
 				}
 			},
@@ -72,14 +60,14 @@ $.fn.autocs = function(url) {
 						break;
 					default:
 						var val = $t.val(),
-							str = "<li class='pop'><b>" + val + "</b></li>";
+							str = "<li class='pop'>" + val + "</li>";
 						if (val == "" || e.which == 13) $pop.hide();
 						else {
 							if (delay) clearTimeout(delay);
 							delay = setTimeout(function() {
 								$.ajax({
 									url: url,
-									dataType: 'jsonp',
+									dataType: 'json',
 									data: {
 										key: val
 									}
@@ -90,7 +78,7 @@ $.fn.autocs = function(url) {
 											html = str;
 										l = data.length;
 										for (; i < l; i++) {
-											html += '<li><b>' + data[i].name + '</b> ' + data[i].address + '</li>';
+											html += '<li>' + data[i].key + '</li>';
 										}
 										$pop.html(html).show();
 									} else {
