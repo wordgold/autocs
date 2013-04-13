@@ -28,4 +28,4 @@
 
 ###代码讲解
 
-[邮箱输入辅助插件 AutoCS](http://yu123.me/2013/03/autocs/)
+[邮箱输入辅助插件 AutoCS](http://yu123.me/2013/04/autocs/)
