@@ -8,7 +8,7 @@ $.fn.autocs = function(url) {
 			$(this).addClass("pop");
 		}).on("mousedown", "li:not(:first)", function() {
 			$pop.hide();
-			$bind.val($(this).text()).closest("form").trigger("submit");
+			$bind.val($(this).text());
 		}),
 		resize = function() {
 			if (rsDelay) clearTimeout(rsDelay);
