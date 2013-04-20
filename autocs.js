@@ -83,8 +83,10 @@ $.fn.autocs = function(url) {
 										} else {
 											$pop.hide();
 										}
-									}).fail(function(){
-										alert(1)
+									}).fail(function(a,b,c){
+										console.log(a);
+										console.log(b);
+										console.log(c);
 									});
 								}, 400)
 							}
