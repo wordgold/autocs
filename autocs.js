@@ -12,7 +12,7 @@
 		}, 99)
 	};
 	$(function() {
-		$("body").append('<ul id="emailpop" class="autopop"></ul>');
+		$("body").append('<ul id="autocs" class="autopop"></ul>');
 		$pop = $("#autocs").on("mouseover", "li:not(:first)", function() {
 			$pop.find("li.pop").removeClass("pop");
 			$(this).addClass("pop");
