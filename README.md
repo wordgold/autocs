@@ -4,6 +4,8 @@
 
 在HTML页面文本框内输入搜索内容时自动提示关键字或搜索结果。
 
+[View Demo](http://rawgithub.com/wordgold/autocs/master/demo.html)
+
 ****************************************
 
 ###使用方法
